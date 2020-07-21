@@ -33,7 +33,7 @@ if args.use_cuda and torch.cuda.is_available():
     logging.info("Use Cuda.")
 
 
-def train(loader, net, criterion, optimizer, device, debug_steps=100, epoch=-1):
+def train(loader, net, criterion, optimizer, device, debug_steps=100, epoch=30):
     net.train(True)
     running_loss = 0.0
     running_regression_loss = 0.0
@@ -176,7 +176,7 @@ if __name__ == '__main__':
         scheduler.step()
 
     
-        if epoch % args.validation_epochs == 0 or epoch == args.num_epochs - 1:
+        if epoch % args.validation_epochs == 0 or epoch == args.num_epochs 30:
             val_loss, val_regression_loss, val_classification_loss = test(val_loader, net, criterion, DEVICE)
 
             model_path = os.path.join(args.checkpoint_folder, f"CNN.pth")
